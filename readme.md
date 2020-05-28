@@ -1,26 +1,25 @@
 
 [![Generic badge](https://img.shields.io/badge/<SUBJECT>-<STATUS>-<COLOR>.svg)](https://shields.io/)
 
-## Title: 
-a
+### Title: 
+ReadMe Generator
 
 ## Description: 
-a
+A command line created readme generator.
 
-## Table of Conents 
-a
+### Table of Conents 
 
 ## Installation: 
-a
+    npm i
 
 ## Usage: 
-a
+    node index.js
 
 ## License:  
-a
+MIT
 
 ## Contributors: 
-a
+    Caroline Lee
 
 ## User Email: 
 
