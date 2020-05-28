@@ -22,6 +22,6 @@ MIT
     Caroline Lee
 
 ## User Email: 
-
+ carolinechloelee@gmail.com
 
 ![userImage](https://avatars3.githubusercontent.com/u/61561122?v=4)
