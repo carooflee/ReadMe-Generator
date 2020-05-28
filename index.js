@@ -58,59 +58,78 @@ function main() {
             const contributors = answers.contributors;
             const userName = answers.user;
 
+
             axios.get('https://api.github.com/users/' + userName)
-            .then((response) => {
-                console.log(response.data);
-                console.log(response.status);
-                console.log(response.statusText);
-                console.log(response.headers);
-                console.log(response.config);
-            });
+                .then((response) => {
+                    console.log(response.data);
+                    console.log(response.status);
+                    console.log(response.statusText);
+                    console.log(response.headers);
+                    console.log(response.config);
 
-            // let img = new Image;
-            // img.src = response.avatar_url;
-            // const email = response.email;
 
-            // createImg(json.response.avatar_url);
+                    // let img = new Image;
+                
+                    let image = response.data.avatar_url;
+                    const email = response.data.email;
+                    
+                    // createImg(json.response.avatar_url);
 
-            let allAnswers = [
-                "\n", "Title: ", "\n", projectTitle, "\n",
-                "\n", "Description: ", "\n", projectDescription, "\n",
-                "\n", "Table of Conents ", "\n", tableOfContents, "\n",
-                "\n", "Installation: ", "\n", installation, "\n",
-                "\n", "Usage: ", "\n", instruction, "\n",
-                "\n", "License:  ", "\n", licenseName, "\n",
-                "\n", "Contributors: ", "\n", contributors, "\n"
-                // ![userImage](img.src, "image")
-                // "\n", "User Email: ", "\n", email, "\n"
-                // "\n", "User Image: ", "\n", img.src, "\n"
-            ];
-            const finalAnswers = allAnswers.toString();
-            var answersNoCommas = finalAnswers.replace(/,/g, "");
 
-            console.log(answersNoCommas);
+                    let allAnswers = [
+                        "\n", "[![Generic badge](https://img.shields.io/badge/<SUBJECT>-<STATUS>-<COLOR>.svg)](https://shields.io/)", "\n",
+                        "\n", "## Title: ", "\n", projectTitle, "\n",
+                        "\n", "## Description: ", "\n", projectDescription, "\n",
+                        "\n", "## Table of Conents ", "\n", tableOfContents, "\n",
+                        "\n", "## Installation: ", "\n", installation, "\n",
+                        "\n", "## Usage: ", "\n", instruction, "\n",
+                        "\n", "## License:  ", "\n", licenseName, "\n",
+                        "\n", "## Contributors: ", "\n", contributors, "\n",
+                        "\n", "## User Email: ", "\n", email, "\n",
+                        "\n", "![userImage]("+image+")"
+                    ];
+                    const finalAnswers = allAnswers.toString();
+                    var answersNoCommas = finalAnswers.replace(/,/g, "");
 
-            function writeToFile(fileName, data) {
-                //pass in answers from questions
-                // //create an md file
-                fs.writeFile('readme.md', answersNoCommas, function (err) {
-                    if (err) throw err;
-                    console.log('ReadMe Created!');
+
+                    console.log(answersNoCommas);
+
+
+                    writeToFile(answersNoCommas);
                 });
-            }
-
-         
-
-            writeToFile();
 
 
         })
         .catch(error => {
             console.log("there's an error somewhere dumbass")
         })
+}
 
+//         const { makeBadge, ValidationError } = require('badge-maker')
+function writeToFile(data) {
+    //pass in answers from questions
+    // //create an md file
+    fs.writeFile('readme.md', data, function (err) {
+        if (err) throw err;
+        console.log('ReadMe Created!');
+    });
+}
+// const format = {
+//   label: 'build',
+//   message: 'passed',
+//   color: 'green',
+// }
 
-};
+// const svg = makeBadge(format)
+// console.log(svg) // <svg...
+
+// try {
+//   makeBadge({})
+// } catch (e) {
+//   console.log(e) // ValidationError: Field `message` is required
+// }
+
+// };
 main();
 
 // let queryURL = ""
@@ -124,9 +143,12 @@ main();
 
 
 
+// let anything = 'hello Caroline';
+// ENDpoint
+// function init(anything) {
+//     console.log(anything)
+//     return anything;
+//     //how am I incorporating this function if I'm writing above 
+// }
 
-function init() {
-    //how am I incorporating this function if I'm writing above 
-}
-
-init();
+// init();
